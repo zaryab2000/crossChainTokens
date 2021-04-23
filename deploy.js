@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const {
   deployContract,
   deployFactory,
@@ -33,12 +35,13 @@ const readFile = util.promisify(fs.readFile);
   xDAI =https://rpc.xdaichain.com
   Polygon (Matic) = https://rpc-mainnet.matic.network
   Heco = https://http-testnet.hecochain.com
+  BSC TEST = https://data-seed-prebsc-1-s1.binance.org:8545/
 
 */
 
-const provider = new ethers.providers.JsonRpcProvider("https://bsc-dataseed1.binance.org/");
+const provider = new ethers.providers.JsonRpcProvider("https://data-seed-prebsc-1-s1.binance.org:8545/");
 const verifyURL = 'https://api.bscscan.com/api'; // api.etherscan.io for Ethereum, api.ftmscam.com for Fantom, etc
-const privateKey = ''; // private key of wallet being used to deploy
+const privateKey = process.env.KEY; // private key of wallet being used to deploy
 const apikey = ''; // apiKey for etherscan / bscscan / ftmscan / etc
 /*
 
@@ -52,7 +55,7 @@ const apikey = ''; // apiKey for etherscan / bscscan / ftmscan / etc
 */
 const mpcAddress = "0x533e3c0e6b48010873B947bddC4721b1bDFF9648";
 const signer = new ethers.Wallet(privateKey, provider);
-const constructorArgs = ["Token Name", "Symbol", "decimals", "underlying", signer.address];
+const constructorArgs = ["BSCTEST", "BSCT", "18", '0x0000000000000000000000000000000000000000', signer.address];
 
 /*
 
